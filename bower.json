@@ -1,9 +1,10 @@
 {
   "name": "teleinfo-app",
-  "version": "0.1.0",
-  "homepage": "https://github.com/lhuet/teleinfo-app",
+  "version": "0.2.0",
+  "homepage": "https://github.com/msansm1/teleinfo-app",
   "authors": [
-    "Laurent HUET <laurent.huet@gmail.com>"
+    "Laurent HUET <laurent.huet@gmail.com>",
+    "Ronan Barbot <ronanbarbot@dizalch.fr>"
   ],
   "license": "MIT",
   "ignore": [
