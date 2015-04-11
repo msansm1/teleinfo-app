@@ -12,3 +12,11 @@ exports.iinst = function(req, res) {
 exports.index = function(req, res) {
     res.json(req.tarifbleu.getIndex());
 };
+
+exports.indexHC = function(req, res) {
+    res.json(req.tarifbleu.getIndexHC());
+};
+
+exports.indexHP = function(req, res) {
+    res.json(req.tarifbleu.getIndexHP());
+};

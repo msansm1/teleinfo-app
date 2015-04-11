@@ -4,6 +4,8 @@ angular.module('teleinfo.home', [])
 
         $scope.value = undefined;
         $scope.indexcompteur = undefined;
+        $scope.indexcompteurHC = undefined;
+        $scope.indexcompteurHP = undefined;
 
         setInterval(function() {
             $http.get('/rest/inst/p')
@@ -11,9 +13,17 @@ angular.module('teleinfo.home', [])
                     $scope.value = data/1000;
                 });
             $http.get('/rest/inst/index')
+            .success(function (data) {
+                	$scope.indexcompteur = data;
+            	});
+            $http.get('/rest/inst/indexhc')
                 .success(function (data) {
-                    $scope.indexcompteur = data;
+                    $scope.indexcompteurHC = data;
                 });
+            $http.get('/rest/inst/indexhp')
+            .success(function (data) {
+                	$scope.indexcompteurHP = data;
+            	});
         }, 2000)
 
         $scope.upperLimit = 6;
