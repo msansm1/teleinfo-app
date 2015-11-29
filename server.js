@@ -17,9 +17,7 @@ mongoClient.connect(config.urlMongo, {uri_decode_auth: true, auto_reconnect: tru
     console.log('Connexion database ok');
 
     // Log toutes les minutes
-    if (process.env.NODE_ENV === 'RPI') {
-        tarifbleu.tarifbleu(config.serialPort, '00 * * * * *', loggerMongo.getLogger(db));
-    }
+    tarifbleu.tarifbleu(config.serialPort, '00 * * * * *', loggerMongo.getLogger(db));
 
     // Partie API Rest
     var app = express();

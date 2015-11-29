@@ -6,8 +6,7 @@ var hostmongo = process.env.MONGO_HOST;
 var portmongo = process.env.MONGO_PORT;
 var databaseName = process.env.MONGO_DATABASE;
 
-
-exports.urlMongo = 'mongodb://'+login+':'+encodeURIComponent(pwd) + '@'+hostmongo+':'+portmongo+'/'+databaseName;
+exports.urlMongo = 'mongodb://'+login+':'+encodeURIComponent(pwd) + '@'+hostmongo+':'+portmongo+'/'+databaseName+'?authSource='+databaseName;
 
 exports.serialPort = process.env.TELE_PORT || '/dev/ttyAMA0';
 
