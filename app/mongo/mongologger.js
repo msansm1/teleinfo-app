@@ -9,7 +9,8 @@ exports.getLogger = function (db) {
     return function (data) {
         var docToInsert = {
             'datetime': new Date(),
-            'indexcpt': data.index,
+            'indexcptHC': data.indexHC,
+            'indexcptHP': data.indexHP,
             'imoy': data.imoy,
             'imax': data.imaxi,
             'pmoy': data.pmoy,
