@@ -21,8 +21,11 @@ function ContentMongo(db) {
                 datetime: 1,
                 indexcpt: 1}},
             {$group: {_id: {annee: '$annee', mois: '$mois', jour: '$jour'},
-                mini: {$min: '$indexcpt'},
-                maxi: {$max: '$indexcpt'}}},
+                mini: {$min: '$indexcptHC'},
+                maxi: {$max: '$indexcptHC'}}},
+            {$group: {_id: {annee: '$annee', mois: '$mois', jour: '$jour'},
+                mini: {$min: '$indexcptHP'},
+                maxi: {$max: '$indexcptHP'}}},
             {$project: {conso: {$subtract: ['$maxi', '$mini']},
                 annee: {$substr: ['$_id.annee', 0, 4]},  // Workaround pour conversion d'un nombre en string pour la concaténation
                 mois: {$substr: ['$_id.mois', 0, 2]},
@@ -85,6 +88,21 @@ function ContentMongo(db) {
                 res.send(err);
             });
 
+    };
+    
+    this.indexLastHour = function (req, res) {
+
+        // Url attendue du type : /rest/puissance/pmaxparheure?debut=2014-01-27&fin=2014-03-16
+  
+        var begin = null;
+        var end = null;
+        mongo.gethourdata(db, 'teleinfo', req.query.debut+":00:00.000Z", function(docs) {
+        	begin = docs;
+            mongo.gethourdata(db, 'teleinfo', req.query.fin+":00:00.000Z", function(docs) {
+            	end = docs;
+                res.send({first:begin, last:end});
+            });
+        });
     };
 
 }

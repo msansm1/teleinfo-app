@@ -1,13 +1,13 @@
 angular.module('teleinfo.home', [])
 
-    .controller('HomeCtrl', function HomeController($scope, $http) {
+    .controller('HomeCtrl', function HomeController($scope, $rootScope, $http, $interval) {
 
         $scope.value = undefined;
         $scope.indexcompteur = undefined;
         $scope.indexcompteurHC = undefined;
         $scope.indexcompteurHP = undefined;
 
-        setInterval(function() {
+        $rootScope.liveTask = $interval(function() {
             $http.get('/rest/inst/p')
                 .success(function (data) {
                     $scope.value = data/1000;
@@ -24,7 +24,7 @@ angular.module('teleinfo.home', [])
             .success(function (data) {
                 	$scope.indexcompteurHP = data;
             	});
-        }, 2000)
+        }, 2000);
 
         $scope.upperLimit = 6;
         $scope.lowerLimit = 0;

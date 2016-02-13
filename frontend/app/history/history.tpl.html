@@ -1,0 +1,38 @@
+<div class="row" ng-controller="HistoryCtrl" style="padding-top: 50px;">
+    <div class="col-md-6 col-xs-12">
+    	<span>Mois courant</span>
+    	<span>I max : </span>
+    	<span>Graph</span>
+    </div>
+    <div class="col-md-6 col-xs-12">
+    	<span>Année en cours</span>
+    	<span>I max : </span>
+    	<span>Graph</span>
+    </div>
+    <div class="col-md-6 col-xs-12">
+    Stats sur une heure : 
+    <br/>
+    Heure : 
+    <br/>    
+    <div class="row">
+        <div class="col-md-6">
+            <p class="input-group">
+              <input type="date" class="form-control" uib-datepicker-popup ng-model="dateDay" is-open="status.opened" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+        </div>
+    </div>
+    <uib-timepicker ng-model="dateHour" hour-step="1" show-meridian="false"></uib-timepicker>
+    </div>
+    <div class="col-md-6 col-xs-12">
+    Last hour HC : {{ lasthourHC }}
+    <br/>
+    Last hour HP : {{ lasthourHP }}
+    <br/>
+    {{ pMaxHour }}
+    <br/>
+    {{ lasthourHC }}
+    </div>
+</div>
